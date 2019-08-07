@@ -959,5 +959,13 @@
         "witness_proxy_set": "위임 설정",
         "witness_proxy_clear": "위임 철회",
         "proxy_update_error": "Your proxy was not updated"
+    },
+    "category": {
+        "sct-freeboard": "일상 이야기",
+        "sct-newbie": "가입인사",
+        "sct-bitcoin": "비트코인",
+        "sct-altcoin": "알트코인",
+        "sct-userguide": "유저 가이드",
+        "investment": "투자 이야기"
     }
 }

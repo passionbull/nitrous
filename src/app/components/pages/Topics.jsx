@@ -107,6 +107,8 @@ const Topics = ({
         const categoriesLinks = categories.map(cat => {
             const { tag, label } = parseCategory(cat);
             const link = order ? `/${order}/${tag}` : `/hot/${tag}`;
+            const locale = tt.getLocale();
+
             return (
                 <li className="c-sidebar__list-item" key={tag}>
                     <Link
@@ -114,7 +116,17 @@ const Topics = ({
                         className="c-sidebar__link"
                         activeClassName="active"
                     >
-                        {label}
+                        {locale === 'ko' &&
+                            String(tt('category.' + label)).includes(
+                                'missing translation'
+                            ) == true &&
+                            label}
+                        {locale === 'ko' &&
+                            String(tt('category.' + label)).includes(
+                                'missing translation'
+                            ) == false &&
+                            tt('category.' + label)}
+                        {locale != 'ko' && label}
                     </Link>
                 </li>
             );

@@ -289,8 +289,24 @@ class PostsIndex extends React.Component {
                     page_title = tt('g.promoted');
                     break;
             }
+
+            const locale = tt.getLocale();
             if (typeof category !== 'undefined') {
-                page_title = `${page_title}: ${category}`; // maybe todo: localize the colon?
+                if (locale === 'ko') {
+                    if (
+                        String(tt('category.' + category)).includes(
+                            'missing translation'
+                        ) == false
+                    ) {
+                        page_title = `${page_title}: ${tt(
+                            'category.' + category
+                        )}`; // maybe todo: localize the colon?
+                    } else {
+                        page_title = `${page_title}: ${category}`; // maybe todo: localize the colon?
+                    }
+                } else {
+                    page_title = `${page_title}: ${category}`; // maybe todo: localize the colon?
+                }
             } else {
                 page_title = `${page_title}: ${tt('g.all_tags')}`;
             }
