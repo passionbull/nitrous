@@ -88,6 +88,10 @@ export default {
             require.ensure([], require => {
                 cb(null, [require('app/components/pages/Market')]);
             });
+        } else if (route.page === 'Notice') {
+            require.ensure([], require => {
+                cb(null, [require('app/components/pages/Notice')]);
+            });
         } else if (route.page === 'Post') {
             //require.ensure([], (require) => {
             cb(null, [require('app/components/pages/PostPage')]);
