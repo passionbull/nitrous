@@ -573,6 +573,17 @@
         "snax_token":
             "Snax는 사용자들이 소셜 활동에 대한 보상을 받을 수 있는 블록체인 플랫폼입니다. 그리고 Steem 계정과 통합될 수 있습니다.<br><a href='https://snax.one' class='external-link' target='_blank'>Snax.One</a>에서 Snax에 대해 자세히 알아보십시오."
     },
+
+    "ask_payment_for_post": {
+        "promote_post": "글 작성하기",
+        "spend_your_DEBT_TOKEN_to_advertise_this_post":
+            "글을 작성하기 위해서는 1 %(DEBT_TOKEN)s를 비용으로 납부하셔야 합니다",
+        "you_successfully_promoted_this_post": "정상 처리되었습니다",
+        "this_post_was_hidden_due_to_low_ratings":
+            "다운보팅에 의해 블라인드 처리 되었습니다.",
+        "write_post": "작성"
+    },
+
     "promote_post_jsx": {
         "promote_post": "글 홍보하기",
         "spend_your_DEBT_TOKEN_to_advertise_this_post":

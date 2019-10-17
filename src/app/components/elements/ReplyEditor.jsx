@@ -37,6 +37,7 @@ class ReplyEditor extends React.Component {
         type: PropTypes.oneOf(['submit_story', 'submit_comment', 'edit']),
         successCallback: PropTypes.func, // indicator that the editor is done and can be hidden
         onCancel: PropTypes.func, // hide editor when cancel button clicked
+        showAskPaymentforPost: PropTypes.func.isRequired,
 
         author: PropTypes.string, // empty or string for top-level post
         permlink: PropTypes.string, // new or existing category (default calculated from title)
@@ -427,16 +428,23 @@ class ReplyEditor extends React.Component {
                     <form
                         className={vframe_class}
                         onSubmit={handleSubmit(({ data }) => {
-                            const startLoadingIndicator = () =>
-                                this.setState({
-                                    loading: true,
-                                    postError: undefined,
+                            console.log(data, replyParams);
+                            if (replyParams.type == 'submit_story') {
+                                // it is submit story
+                                console.log('********************');
+                                this.props.showAskPaymentforPost();
+                            } else {
+                                const startLoadingIndicator = () =>
+                                    this.setState({
+                                        loading: true,
+                                        postError: undefined,
+                                    });
+                                reply({
+                                    ...data,
+                                    ...replyParams,
+                                    startLoadingIndicator,
                                 });
-                            reply({
-                                ...data,
-                                ...replyParams,
-                                startLoadingIndicator,
-                            });
+                            }
                         })}
                         onChange={() => {
                             this.setState({ postError: null });
@@ -866,6 +874,14 @@ export default formId =>
 
         // mapDispatchToProps
         dispatch => ({
+            showAskPaymentforPost: () => {
+                dispatch(
+                    globalActions.showDialog({
+                        name: 'askPaymentForPost',
+                        params: {},
+                    })
+                );
+            },
             clearMetaData: id => {
                 dispatch(globalActions.clearMeta({ id }));
             },

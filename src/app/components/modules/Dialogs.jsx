@@ -9,6 +9,7 @@ import shouldComponentUpdate from 'app/utils/shouldComponentUpdate';
 import QrReader from 'app/components/elements/QrReader';
 import CheckLoginOwner from 'app/components/elements/CheckLoginOwner';
 import PromotePost from 'app/components/modules/PromotePost';
+import AskPaymentForPost from 'app/components/modules/AskPaymentForPost';
 import ExplorePost from 'app/components/modules/ExplorePost';
 import RatePost from 'app/components/modules/RatePost';
 import RewardPost from 'app/components/modules/RewardPost';
@@ -85,6 +86,16 @@ class Dialogs extends React.Component {
                         <Reveal onHide={this['hide_' + k]} show>
                             <CloseButton onClick={this['hide_' + k]} />
                             <ExplorePost
+                                onClick={this['hide_' + k]}
+                                {...v.get('params').toJS()}
+                            />
+                        </Reveal>
+                    </span>
+                ) : k === 'askPaymentForPost' ? (
+                    <span key={idx++}>
+                        <Reveal onHide={this['hide_' + k]} show>
+                            <CloseButton onClick={this['hide_' + k]} />
+                            <AskPaymentForPost
                                 onClick={this['hide_' + k]}
                                 {...v.get('params').toJS()}
                             />
